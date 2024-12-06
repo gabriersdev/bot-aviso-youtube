@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="style: refactor">
+      <change beforePath="$PROJECT_DIR$/history_ids.json" beforeDir="false" afterPath="$PROJECT_DIR$/history_ids.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +53,64 @@
       <option name="presentableId" value="Default" />
       <updated>1731796377898</updated>
     </task>
+    <task id="LOCAL-00001" summary="feat: implementando mensagens aleatoriamente e correções no código">
+      <option name="closed" value="true" />
+      <created>1733449985760</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733449985760</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: substituindo emojis unicode para álias dos emotes do discord">
+      <option name="closed" value="true" />
+      <created>1733451704477</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733451704477</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dev: config da ide">
+      <option name="closed" value="true" />
+      <created>1733451740126</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733451740126</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: implantando prevenção a erros de encoding e trim">
+      <option name="closed" value="true" />
+      <created>1733451766993</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733451766993</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: alterando as mensagens">
+      <option name="closed" value="true" />
+      <created>1733487654517</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733487654517</updated>
+    </task>
+    <task id="LOCAL-00006" summary="style: refactor">
+      <option name="closed" value="true" />
+      <created>1733488051431</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733488051431</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: implementando mensagens aleatoriamente e correções no código" />
+    <MESSAGE value="feat: substituindo emojis unicode para álias dos emotes do discord" />
+    <MESSAGE value="dev: config da ide" />
+    <MESSAGE value="feat: implantando prevenção a erros de encoding e trim" />
+    <MESSAGE value="feat: alterando as mensagens" />
+    <MESSAGE value="style: refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: refactor" />
   </component>
 </project>
