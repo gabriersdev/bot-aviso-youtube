@@ -37,8 +37,8 @@ announced_videos = set()
 def log_register(message):
   timestamp = datetime.now()
   print(f"{timestamp} {message}")
-  with open("logs.txt", "a", encoding="utf-8") as f:
-    f.write(f"{timestamp} {message}\n")
+  with open("logs.txt", "a", encoding="utf-8") as file:
+    file.write(f"{timestamp} {message}\n")
 
 
 # Load announced video IDs
