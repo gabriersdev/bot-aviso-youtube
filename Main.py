@@ -1,125 +1,124 @@
+import io
+import json
+from datetime import datetime
 from random import random
 
 import discord
 from discord.ext import commands, tasks
 from googleapiclient.discovery import build
-from datetime import datetime
-import json
-from json import JSONDecodeError
-import io
 
 from credentials import credentials
 from messages import messages
 
 DISCORD_TOKEN = credentials.get('DISCORD_TOKEN')
 YOUTUBE_API_KEY = credentials.get('YOUTUBE_API_KEY')
-YOUTUBE_CHANNEL_ID = credentials.get('YOUTUBE_CHANNEL_ID')  # ID do canal, não o nome de usuário
+YOUTUBE_CHANNEL_ID = credentials.get('YOUTUBE_CHANNEL_ID')
 YOUTUBE_CHANNEL_NAME = credentials.get('YOUTUBE_CHANNEL_NAME')
-DISCORD_CHANNEL_ID = credentials.get('DISCORD_CHANNEL_ID')  # ID do canal do Discord
+DISCORD_CHANNEL_ID = credentials.get('DISCORD_CHANNEL_ID')
 
-# Configurar Intents do Discord
+# Configure Discord intents
 intents = discord.Intents.default()
-# Habilitar intents para guilds
 intents.guilds = True
 intents.members = True
-# Habilitar intents para mensagens
 intents.message_content = True
 
-# Inicializa o cliente do Discord
+# Initialize Discord bot
 bot = commands.Bot(command_prefix="!", intents=intents)
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
-# Arquivo para armazenar os IDs dos vídeos já anunciados
-arquivo_videos_anunciados = "history_ids.json"
+# File to store announced video IDs
+ANNOUNCED_VIDEOS_FILE = "announced_videos.json"
 
-# Set de IDs de vídeos já anunciados
-videos_anunciados = set()
+# Set of announced video IDs
+announced_videos = set()
 
 
-# Registra os logs
+# Log messages
 def log_register(message):
-  moment = datetime.now()
-  print(f"{moment} {message}")
-  open("logs.txt", "a").write(f"{moment} {message}\n")
+  timestamp = datetime.now()
+  print(f"{timestamp} {message}")
+  with open("logs.txt", "a", encoding="utf-8") as f:
+    f.write(f"{timestamp} {message}\n")
 
 
-# Carrega os IDs dos vídeos já anunciados
+# Load announced video IDs
 try:
-  with open(arquivo_videos_anunciados, "r") as f:
-    videos_anunciados = set(json.load(f))
+  with open(ANNOUNCED_VIDEOS_FILE, "r", encoding="utf-8") as f:
+    announced_videos = set(json.load(f))
 except FileNotFoundError:
-  videos_anunciados = set()
-except JSONDecodeError:
+  announced_videos = set()
+except json.JSONDecodeError:
   log_register("JSONDecodeError: provavelmente o arquivo JSON está vazio.")
-  history_lives_annoucement = set()
+  announced_videos = set()
 
 
-@tasks.loop(minutes=0.5)  # Verifica a cada 5 minutos - ajuste conforme necessário
-async def verificar_novos_videos():
+@tasks.loop(minutes=0.5)  # Check every 0.5 minutes - adjust as needed
+async def check_for_new_videos():
   try:
     request = youtube.search().list(
       part="snippet",
       channelId=YOUTUBE_CHANNEL_ID,
       type="video",
-      order="date",  # Ordena por data para pegar o mais recente
-      maxResults=1  # Pega apenas o vídeo mais recente
+      order="date",  # Order by date to get the most recent video
+      maxResults=1  # Get only the most recent video
     )
     response = request.execute()
 
-    canal_discord = bot.get_channel(DISCORD_CHANNEL_ID)
+    discord_channel = bot.get_channel(DISCORD_CHANNEL_ID)
 
-    if not canal_discord:
+    if not discord_channel:
       log_register(f"Canal com ID {DISCORD_CHANNEL_ID} não encontrado.")
       return
 
-    if response['items']:  # Verifica se há novos vídeos
+    if response['items']:  # Check if there are new videos
       video_id = response['items'][0]['id']['videoId']
 
-      # Verifica se o vídeo já foi anunciado
-      if video_id not in videos_anunciados:
+      # Check if the video has already been announced
+      if video_id not in announced_videos:
         log_register(f"ID do Vídeo atual: {video_id}. O ID atual não estava nos IDs anteriores.")
 
         video_url = f"https://www.youtube.com/watch?v={video_id}"
-        video_name = response['items'][0]['snippet']['title']
+        video_title = response['items'][0]['snippet']['title']
 
         if messages:
           message = messages[int(random() * len(messages))]
           if message:
-            if message.count("{username}"):
+            if "{username}" in message:
               message = message.format(username=YOUTUBE_CHANNEL_NAME)
           else:
-            message = f"O canal {YOUTUBE_CHANNEL_NAME} está ao vivo! Assista aqui:"
+            message = f"Vídeo novo do {YOUTUBE_CHANNEL_NAME}! Assista aqui:"
         else:
-          message = f"O canal {YOUTUBE_CHANNEL_NAME} está ao vivo! Assista aqui:"
+          message = f"Vídeo novo do {YOUTUBE_CHANNEL_NAME}! Assista aqui:"
 
-        sender = f"@everyone {message} - {video_name}! {video_url}"
-        await canal_discord.send(sender)
+        message = message.encode('charmap', errors='replace').decode('charmap')
 
-        log_register(f"Mensagem: {sender}")
+        announcement = f"@everyone {message.strip()} - {video_title}! {video_url}"
+        await discord_channel.send(announcement)
+
+        log_register(f"Mensagem: {announcement}")
         log_register(f"Mensagem de aviso de Vídeo enviada!")
 
-        # Adiciona o ID do vídeo à lista de vídeos anunciados
-        videos_anunciados.add(video_id)
+        # Add the video ID to the set of announced videos
+        announced_videos.add(video_id)
 
-        # Salva a lista atualizada em disco
+        # Save the updated set to disk
         buffer = io.StringIO()
-        json.dump(list(videos_anunciados), buffer)
-        with open("history_ids.json", "w") as file:
+        json.dump(list(announced_videos), buffer)
+        with open(ANNOUNCED_VIDEOS_FILE, "w", encoding="utf-8") as file:
           file.write(buffer.getvalue())
-
       else:
-        print(f"Novos vídeos não foram encontrados.")
+        print(f"Novos vídeos do {YOUTUBE_CHANNEL_NAME} não foram encontrados.")
   except Exception as error:
-    print(f"Erro ao verificar vídeos: {error}")
+    log_register(f"Erro ao verificar vídeos: {error}")
 
 
 @bot.event
 async def on_ready():
   log_register(f"Bot conectado como {bot.user}")
-  verificar_novos_videos.start()
+  check_for_new_videos.start()
 
 
-# Rodar o bot
+# Run the bot
 try:
   bot.run(DISCORD_TOKEN)
 except Exception as e:
