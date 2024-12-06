@@ -27,7 +27,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 # File to store announced video IDs
-ANNOUNCED_VIDEOS_FILE = "announced_videos.json"
+ANNOUNCED_VIDEOS_FILE = "history_ids.json"
 
 # Set of announced video IDs
 announced_videos = set()
@@ -47,6 +47,7 @@ try:
     announced_videos = set(json.load(f))
 except FileNotFoundError:
   announced_videos = set()
+  log_register(f"O arquivo {ANNOUNCED_VIDEOS_FILE} não foi encontrado")
 except json.JSONDecodeError:
   log_register("JSONDecodeError: provavelmente o arquivo JSON está vazio.")
   announced_videos = set()
