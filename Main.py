@@ -1,5 +1,6 @@
 import io
 import json
+import re
 from datetime import datetime
 from random import random
 
@@ -80,6 +81,9 @@ async def check_for_new_videos():
 
         video_url = f"https://www.youtube.com/watch?v={video_id}"
         video_title = response['items'][0]['snippet']['title']
+
+        # Tratamento do video_title, removendo caracteres tipo &quot; &copy; com regex
+        video_title = re.sub(r'&[a-zA-Z]+;', '', video_title)
 
         if messages:
           message = messages[int(random() * len(messages))]
