@@ -1,6 +1,7 @@
 import io
 import json
 import re
+import sys
 from datetime import datetime
 from random import random
 
@@ -54,7 +55,7 @@ except json.JSONDecodeError:
   announced_videos = set()
 
 
-@tasks.loop(minutes=0.5)  # Check every 0.5 minutes - adjust as needed
+@tasks.loop(minutes=10)  # Check every 10 minutes - adjust as needed
 async def check_for_new_videos():
   try:
     request = youtube.search().list(
@@ -115,6 +116,13 @@ async def check_for_new_videos():
         print(f"Novos vídeos do {YOUTUBE_CHANNEL_NAME} não foram encontrados.")
   except Exception as error:
     log_register(f"Erro ao verificar vídeos: {error}")
+    # Verifica se houve erro de excesso de cota
+    if str(error).find('The request cannot be completed because you have exceeded') != -1:
+      if False:
+        log_register("Cota excedida. Encerrando bot")
+        sys.exit(1)
+      else:
+        log_register("Cota excedida")
 
 
 @bot.event
