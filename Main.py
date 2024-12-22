@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from random import random
 
+import pytz
 import discord
 from discord.ext import commands, tasks
 from googleapiclient.discovery import build
@@ -43,6 +44,22 @@ def log_register(message):
     file.write(f"{timestamp} {message}\n")
 
 
+def get_brasilia_hour():
+  """Retorna a hora atual em Brasília (UTC-3)."""
+  brasilia_tz = pytz.timezone('America/Sao_Paulo')
+  brasilia_time = datetime.datetime.now(brasilia_tz)
+  return brasilia_time.strftime('%H')
+
+
+def get_loop_minutes():
+  time = int(get_brasilia_hour())
+  # Se hora entre 11 e 13, o tempo do loop é de 1 minuto, esse é o horário que geralmente saem novos vídeos no canal
+  if time >= 11 and time <= 13:
+    return 1
+  # Se não, o tempo do loop é 10 minutos
+  return 15 # Tempo definido é maior pois a cota máxima diária padrão da API do Youtube é 10mil requisições
+
+
 # Load announced video IDs
 try:
   with open(ANNOUNCED_VIDEOS_FILE, "r", encoding="utf-8") as f:
@@ -55,7 +72,7 @@ except json.JSONDecodeError:
   announced_videos = set()
 
 
-@tasks.loop(minutes=10)  # Check every 10 minutes - adjust as needed
+@tasks.loop(minutes=get_loop_minutes())  # Check every 10 minutes - adjust as needed
 async def check_for_new_videos():
   try:
     request = youtube.search().list(
