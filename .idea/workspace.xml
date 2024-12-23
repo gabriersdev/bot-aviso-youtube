@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="style: refactor">
-      <change beforePath="$PROJECT_DIR$/history_ids.json" beforeDir="false" afterPath="$PROJECT_DIR$/history_ids.json" afterDir="false" />
+    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="feat: verificação do horario para definir o tempo entre as verificacoes">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/old_history_ids.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/history_ids.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,14 +30,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/gabri/PycharmProjects/bot-aviso-youtube"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/PycharmProjects/bot-aviso-youtube&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gabri\PycharmProjects\bot-aviso-youtube" />
@@ -101,7 +107,47 @@
       <option name="project" value="LOCAL" />
       <updated>1733488051431</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: registro de log quando arquivo não for encontrado">
+      <option name="closed" value="true" />
+      <created>1733488847803</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733488847803</updated>
+    </task>
+    <task id="LOCAL-00008" summary="dev: idea config">
+      <option name="closed" value="true" />
+      <created>1733488876850</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733488876850</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: tratamento para título implementado">
+      <option name="closed" value="true" />
+      <created>1734385991600</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1734385991600</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: tratamento para erro de cota excedida">
+      <option name="closed" value="true" />
+      <created>1734400641610</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734400641610</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: verificação do horario para definir o tempo entre as verificacoes">
+      <option name="closed" value="true" />
+      <created>1734899310388</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734899310388</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -111,6 +157,11 @@
     <MESSAGE value="feat: implantando prevenção a erros de encoding e trim" />
     <MESSAGE value="feat: alterando as mensagens" />
     <MESSAGE value="style: refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: refactor" />
+    <MESSAGE value="feat: registro de log quando arquivo não for encontrado" />
+    <MESSAGE value="dev: idea config" />
+    <MESSAGE value="feat: tratamento para título implementado" />
+    <MESSAGE value="feat: tratamento para erro de cota excedida" />
+    <MESSAGE value="feat: verificação do horario para definir o tempo entre as verificacoes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: verificação do horario para definir o tempo entre as verificacoes" />
   </component>
 </project>

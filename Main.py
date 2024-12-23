@@ -30,7 +30,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 # File to store announced video IDs
-ANNOUNCED_VIDEOS_FILE = "history_ids.json"
+ANNOUNCED_VIDEOS_FILE = "old_history_ids.json"
 
 # Set of announced video IDs
 announced_videos = set()
@@ -47,7 +47,7 @@ def log_register(message):
 def get_brasilia_hour():
   """Retorna a hora atual em Brasília (UTC-3)."""
   brasilia_tz = pytz.timezone('America/Sao_Paulo')
-  brasilia_time = datetime.datetime.now(brasilia_tz)
+  brasilia_time = datetime.now(brasilia_tz)
   return brasilia_time.strftime('%H')
 
 
