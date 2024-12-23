@@ -2,4 +2,3 @@ credentials.py
 logs.txt
 .idea
 __pycache__
-old_history_ids.json

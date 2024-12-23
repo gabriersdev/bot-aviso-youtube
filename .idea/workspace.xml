@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="feat: verificação do horario para definir o tempo entre as verificacoes">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="feat: corrigindo erro de datetime, criando arquivos de config para container docker">
       <change afterPath="$PROJECT_DIR$/old_history_ids.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/history_ids.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734899310388</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: corrigindo erro de datetime, criando arquivos de config para container docker">
+      <option name="closed" value="true" />
+      <created>1734978150547</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1734978150547</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -162,6 +164,7 @@
     <MESSAGE value="feat: tratamento para título implementado" />
     <MESSAGE value="feat: tratamento para erro de cota excedida" />
     <MESSAGE value="feat: verificação do horario para definir o tempo entre as verificacoes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: verificação do horario para definir o tempo entre as verificacoes" />
+    <MESSAGE value="feat: corrigindo erro de datetime, criando arquivos de config para container docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: corrigindo erro de datetime, criando arquivos de config para container docker" />
   </component>
 </project>

@@ -30,7 +30,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 # File to store announced video IDs
-ANNOUNCED_VIDEOS_FILE = "old_history_ids.json"
+ANNOUNCED_VIDEOS_FILE = "history_ids.json"
 
 # Set of announced video IDs
 announced_videos = set()
