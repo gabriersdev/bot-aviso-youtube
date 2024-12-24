@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="feat: corrigindo erro de datetime, criando arquivos de config para container docker">
-      <change afterPath="$PROJECT_DIR$/old_history_ids.json" afterDir="false" />
-    </list>
+    <list default="true" id="21361bfd-7e9f-48e8-ba66-e92af1354566" name="Changes" comment="feat: corrigindo erro de datetime, criando arquivos de config para container docker" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
