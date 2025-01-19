@@ -56,8 +56,8 @@ def get_loop_minutes():
   # Se hora entre 11 e 13, o tempo do loop é de 1 minuto, esse é o horário que geralmente saem novos vídeos no canal
   if time >= 11 and time <= 13:
     return 1
-  # Se não, o tempo do loop é 10 minutos
-  return 15 # Tempo definido é maior pois a cota máxima diária padrão da API do Youtube é 10mil requisições
+  # Se não, o tempo do loop é 20 minutos
+  return 20 # Tempo definido é maior pois a cota máxima diária padrão da API do Youtube é 10mil requisições
 
 
 # Load announced video IDs
