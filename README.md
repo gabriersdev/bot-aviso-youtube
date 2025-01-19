@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este bot notifica automaticamente em um canal do Discord quando um novo vídeo é postado em um canal do YouTube.
+Bot notifica automaticamente em um canal do Discord quando um novo vídeo é postado em um canal do YouTube.
 
 ## Funcionamento
 
