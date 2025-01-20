@@ -34,6 +34,9 @@ Bot notifica automaticamente em um canal do Discord quando um novo vídeo é pos
 - Configure escopos e permissões (veja no código).
 - Adicione o bot ao servidor usando a URL gerada.
 
+> [!IMPORTANT]
+> É importante que tanto o servidor, quanto o canal em que as notificação serão enviadas permita que o bot tenha as mesmas permissões definidas para que as mensagens sejam enviadas.  
+
 3. **API do YouTube**
 
 - Crie um projeto no [Google Cloud Console](https://console.cloud.google.com/).
